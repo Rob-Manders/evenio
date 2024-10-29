@@ -11,7 +11,7 @@ export default function ThemeSwitch() {
 
 	return (
 		<button className={styles.button} onClick={toggleTheme} aria-label="Toggle colour theme">
-			{lightTheme ? <Icon_LightMode /> : <Icon_DarkMode />}
+			{lightTheme ? <Icon_LightMode className={styles.icon} /> : <Icon_DarkMode className={styles.icon} />}
 		</button>
 	)
 }
