@@ -1,7 +1,9 @@
 :root {
 	--text: #2b2b2b;
 	--background: #fcfefb;
+	--background-primary: rgba(57, 145, 192, 0.2);
 	--primary: #3991c0;
+	--primary-dark: #26637f;
 	--secondary: #92d9c4;
 	--accent: #72cacf;
 }
