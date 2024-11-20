@@ -1,10 +1,8 @@
 'use client'
 
-import { useContext }               from 'react'
-import { UserContext }              from '@/context/UserContext'
-import { signInWithPopup, signOut } from '@firebase/auth'
-import { auth }                     from '@/firebase'
-import { googleAuthProvider }       from '@/firebase/auth'
+import { useContext }  from 'react'
+import { UserContext } from '@/context/UserContext'
+import { LoginForm }   from '@/components/layout'
 
 export default function Profile() {
 	const { user } = useContext(UserContext)
@@ -14,11 +12,7 @@ export default function Profile() {
 			<h2>Profile</h2>
 			{user && <p>{user.displayName}</p>}
 
-			{
-				user ? <button onClick={() => signOut(auth)}>Logout</button> : <button onClick={() => {
-					signInWithPopup(auth, googleAuthProvider)
-				}}>Login</button>
-			}
+			<LoginForm />
 		</main>
 	)
 }
