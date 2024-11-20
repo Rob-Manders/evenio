@@ -1,3 +1,5 @@
+'use client'
+
 import { auth }                                          from '@/firebase'
 import { createContext, ReactNode, useEffect, useState } from 'react'
 import { onAuthStateChanged, User }                      from '@firebase/auth'
