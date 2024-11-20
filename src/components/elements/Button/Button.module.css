@@ -1,0 +1,16 @@
+.Button {
+	cursor: pointer;
+	border: none;
+	background-color: var(--primary);
+	color: var(--background);
+	font-size: 1.125rem;
+	font-weight: 700;
+	padding: 0.75rem 1.25rem;
+	border-radius: 100vh;
+	transition: background-color 0.2s;
+
+	&:hover,
+	&:active {
+		background-color: var(--accent);
+	}
+}

@@ -6,6 +6,7 @@ import { signInWithPopup, signOut } from '@firebase/auth'
 import { auth }                     from '@/firebase'
 import { googleAuthProvider }       from '@/firebase/auth'
 import { UserContext }              from '@/context/UserContext'
+import Button                       from '@/components/elements/Button/Button'
 
 export default function LoginForm() {
 	const { user } = useContext(UserContext)
@@ -13,11 +14,11 @@ export default function LoginForm() {
 	// TODO: Implement Facebook and GitHub providers.
 
 	const loggedOutForm = (
-		<button onClick={() => signInWithPopup(auth, googleAuthProvider)}>Login</button>
+		<Button text="Login" action={() => signInWithPopup(auth, googleAuthProvider)} />
 	)
 
 	const loggedInForm = (
-		<button onClick={() => signOut(auth)}>Logout</button>
+		<Button text="Logout" action={() => signOut(auth)} />
 	)
 
 	return (
