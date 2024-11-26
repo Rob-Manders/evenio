@@ -7,9 +7,7 @@ export interface EvenioGroup {
 	dateCreated: Date
 	name: string
 	description: string
-	admins?: EvenioUserID[]
-	organisers?: EvenioUserID[]
-	contactEmail?: string
-	suspended?: boolean
-	suspensionReason?: string
+	admins: EvenioUserID[]
+	organisers: EvenioUserID[]
+	contactEmail: string
 }

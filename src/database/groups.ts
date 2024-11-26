@@ -1,25 +1,26 @@
-import { collection, doc, getDoc, getDocs, query, where } from 'firebase/firestore'
-import { database }                                       from '@/firebase'
-import { EvenioGroup, EvenioGroupID }                     from '@/types/group'
+import { collection, doc, getDoc, getDocs, orderBy, query, where } from 'firebase/firestore'
+import { database }                                                from '@/firebase'
+import { EvenioGroup, EvenioGroupID }                              from '@/types/group'
 
 const GROUPS_COLLECTION = 'groups'
 
 export async function getAllGroups(): Promise<EvenioGroup[]> {
 	const ref = collection(database, GROUPS_COLLECTION)
-	const q = query(ref, where('suspended', '==', false))
+	const q = query(ref, where('suspended', '==', false), orderBy('name', 'asc'))
 
 	const snapshot = await getDocs(q)
-	const docs = snapshot.docs.map(doc => doc.data())
 
-	return docs.map((data): EvenioGroup => {
+	return snapshot.docs.map((document): EvenioGroup => {
+		const data = document.data()
+
 		return {
-			id: data.id,
+			id: document.id,
 			dateCreated: data.dateCreated,
 			name: data.name,
 			description: data.description,
 			admins: data.admins,
 			organisers: data.organisers,
-			contactEmail: data.contactEmail,
+			contactEmail: data.contactEmail
 		}
 	})
 }
@@ -45,6 +46,6 @@ export async function getGroupById(id: EvenioGroupID): Promise<EvenioGroup | nul
 		description: data.description,
 		admins: data.admins,
 		organisers: data.organisers,
-		contactEmail: data.contactEmail,
+		contactEmail: data.contactEmail
 	}
 }
